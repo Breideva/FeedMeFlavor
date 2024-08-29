@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swiper-button-next,
+.swiper-button-prev {
+    background-color:rgb(230, 253, 255, 0.8);
+    padding: 1vw;
+    color: #302F37;
+    border-radius: 25%;
+    transition: all .5s ease-out;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 1.5vw;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgb(230, 253, 255, 0.5);
+}
+.swiper-button-next:active,
+.swiper-button-prev:active {
+    background-color: rgb(230, 253, 255);
+} 
+
+.swiper-pagination-bullet {
+    background-color: rgb(230, 253, 255);
+}
+.swiper-pagination-bullet-active {
+    background-color: rgb(230, 253, 255);
+}
