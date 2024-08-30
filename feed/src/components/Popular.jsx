@@ -30,14 +30,20 @@ export default function Popular() {
   };
   return (
     <div className="bg-background text-text flex justify-center">
-      <div className="w-8/12">
+      <div className="w-9/12">
         <h1 className="font-bold text-5xl sm:text-5xl md:text-6xl lg:text-8xl pb-6 pl-6">
           Popular
         </h1>
         <Swiper
-          className="bg-backgroundLight shadow-xl rounded-xl"
+          className="bg-backgroundLight shadow-xl rounded-xl p-4"
           spaceBetween={30}
-          slidesPerView={3}
+          slidesPerView={1}
+          breakpoints={{
+            640: { slidesPerView: 2 }, // sm
+            768: { slidesPerView: 3 }, // md
+            1024: { slidesPerView: 3 }, // lg
+            1280: { slidesPerView: 4 }, // xl
+          }}
           navigation
           pagination={{ clickable: true }}
           modules={[Navigation, Pagination]}
@@ -45,13 +51,13 @@ export default function Popular() {
           {popular.map((recipe) => (
             <SwiperSlide
               key={recipe.id}
-              className="flex flex-col justify-center items-center p-6 text-xs sm:text-sm med:text-md lg:text-2xl"
+              className="flex flex-col justify-center items-center text-xs sm:text-sm med:text-md lg:text-lg xl:2xl cursor-pointer"
             >
-              <h2 className="absolute bg-backgroundLight w-3/4 py-6 text-center rounded-xl top:0 transition-all duration-300 hover:bg-background">
+              <h2 className="absolute bg-backgroundLight w-3/4 py-3 sm:py-1 md:py-1 lg:py-1 xl:py-4 text-center rounded-xl top:0 transition-all duration-300 hover:bg-background">
                 {recipe.title}
               </h2>
               <img
-                className="w-full rounded-xl my-6"
+                className="w-full rounded-xl m-6"
                 src={recipe.image}
                 alt={recipe.title}
               />
