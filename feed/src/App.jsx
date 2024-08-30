@@ -3,7 +3,7 @@ import Home from './pages/Home'
 
 export default function App() {
   return (
-    <div className="bg-background flex flex-col items-center font-tienne">
+    <div className="font-tienne">
     <Home/>
     </div>
   )
