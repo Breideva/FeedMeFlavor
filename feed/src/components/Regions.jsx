@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -49,7 +49,6 @@ export default function Region() {
 
   useEffect(() => {
     getRegion();
-    findCuisine();
   }, []);
 
   const check = localStorage.getItem("region");
@@ -80,17 +79,23 @@ export default function Region() {
           breakpoints={{
             640: { slidesPerView: 2 }, // sm
             768: { slidesPerView: 3 }, // md
+            1024: { slidesPerView: 4 }, // md
           }}
           navigation
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
           pagination={{ clickable: true }}
-          modules={[Navigation, Pagination]}
+          modules={[Navigation, Pagination, Autoplay]}
         >
           {region.map((recipe) => (
             <SwiperSlide
               key={recipe.id}
               className="flex flex-col justify-center items-center text-md sm:text-sm med:text-md lg:text-lg xl:2xl cursor-pointer"
             >
-              <h2 className="absolute bg-backgroundLight w-full py-4 sm:py-1 md:py-1 lg:py-1 xl:py-6 text-center bottom-6 rounded-b-lg transition-all duration-300 hover:bg-background ">
+              <h2 className="absolute bg-backgroundLight w-full py-4 sm:py-1 md:py-1 lg:py-1 xl:py-6 text-center bottom-6 rounded-b-lg transition-all duration-300 hover:bg-secondary ">
                 {recipe.title}
               </h2>
               <img
