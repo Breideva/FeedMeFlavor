@@ -51,9 +51,9 @@ export default function Popular() {
           {popular.map((recipe) => (
             <SwiperSlide
               key={recipe.id}
-              className="flex flex-col justify-center items-center text-xs sm:text-sm med:text-md lg:text-lg xl:2xl cursor-pointer"
+              className="flex flex-col justify-center items-center text-md med:text-md lg:text-lg xl:2xl cursor-pointer"
             >
-              <h2 className="absolute bg-backgroundLight w-3/4 py-3 sm:py-1 md:py-1 lg:py-1 xl:py-4 text-center rounded-xl top:0 transition-all duration-300 hover:bg-background">
+              <h2 className="absolute bg-backgroundLight w-3/4 py-3 sm:py-1 md:py-1 lg:py-1 xl:py-4 text-center rounded-xl top:0 transition-all duration-300 hover:bg-secondary">
                 {recipe.title}
               </h2>
               <img
