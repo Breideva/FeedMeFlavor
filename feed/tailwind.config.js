@@ -11,7 +11,7 @@ export default {
         backgroundLight: "rgba(67, 66, 77, 0.3)",
         text: "#E6FDFF", 
         primary: "#0B5563", 
-        secondary: "#18BCDC",
+        secondary: "#062F37",
       },
       fontFamily: {
         tienne: ['Tienne', 'sans-serif'],
