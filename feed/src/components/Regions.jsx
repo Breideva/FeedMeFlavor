@@ -95,10 +95,11 @@ export default function Region() {
               key={recipe.id}
               className="flex flex-col justify-center items-center text-md sm:text-sm med:text-md lg:text-lg xl:2xl cursor-pointer"
             >
-              <h2 className="absolute bg-backgroundLight w-full py-4 sm:py-1 md:py-1 lg:py-1 xl:py-6 text-center bottom-6 rounded-b-lg transition-all duration-300 hover:bg-secondary ">
+              <h2 className="absolute bg-backgroundLight w-full py-4 text-center bottom-6 rounded-b-lg transition-all duration-300 hover:bg-secondary ">
                 {recipe.title}
               </h2>
               <img
+                loading="lazy"
                 className="w-full rounded-xl my-6"
                 src={recipe.image}
                 alt={recipe.title}

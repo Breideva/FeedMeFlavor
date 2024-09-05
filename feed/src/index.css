@@ -4,9 +4,9 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-    background-color:rgb(230, 253, 255, 0.8);
+    background-color:rgba(67, 66, 77);
     padding: 1vw;
-    color: #302F37;
+    color: #E6FDFF;
     border-radius: 25%;
     transition: all .2s linear;
 }
@@ -16,11 +16,11 @@
 }
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-    background-color: rgb(24, 188, 220);
+    background-color: #062F37;
 }
 .swiper-button-next:active,
 .swiper-button-prev:active {
-    background-color: rgb(104, 220, 243);
+    background-color: #0B5563;
 } 
 
 .swiper-pagination-bullet {
