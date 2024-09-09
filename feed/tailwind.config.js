@@ -10,7 +10,7 @@ export default {
         background: "#302F37", 
         backgroundLight: "rgba(67, 66, 77, 0.3)",
         text: "#E6FDFF", 
-        primary: "#0B5563", 
+        primary: "#0A4E5C", 
         secondary: "#062F37",
       },
       fontFamily: {
