@@ -4,6 +4,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Link } from "react-router-dom";
 
 export default function Popular() {
   const [popular, setPopular] = useState([]);
@@ -20,12 +21,12 @@ export default function Popular() {
     } else {
       const apiKey = import.meta.env.VITE_API_KEY;
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8`
+        `https://api.spoonacular.com/itemss/random?apiKey=${apiKey}&number=8`
       );
       const data = await api.json();
       console.log(data);
-      localStorage.setItem("popular", JSON.stringify(data.recipes));
-      setPopular(data.recipes);
+      localStorage.setItem("popular", JSON.stringify(data.itemss));
+      setPopular(data.itemss);
     }
   };
   return (
@@ -48,19 +49,21 @@ export default function Popular() {
           pagination={{ clickable: true }}
           modules={[Navigation, Pagination]}
         >
-          {popular.map((recipe) => (
-            <SwiperSlide
-              key={recipe.id}
-              className="flex flex-col justify-center items-center text-md med:text-md lg:text-lg xl:2xl cursor-pointer"
-            >
-              <h2 className="absolute bg-backgroundLight w-3/4 py-1 text-center rounded-xl top:0 transition-all duration-300 hover:bg-secondary">
-                {recipe.title}
-              </h2>
-              <img
-                className="w-full rounded-xl m-6"
-                src={recipe.image}
-                alt={recipe.title}
-              />
+          {popular.map((items) => (
+            <SwiperSlide key={items.id}>
+              <Link
+                className="flex flex-col justify-center items-center text-md med:text-md lg:text-lg xl:2xl cursor-pointer"
+                to={"/items/" + items.id}
+              >
+                <h2 className="absolute bg-backgroundLight w-3/4 py-1 text-center rounded-xl first-letter:transition-all duration-300 hover:bg-secondary">
+                  {items.title}
+                </h2>
+                <img
+                  className="w-full rounded-xl m-6"
+                  src={items.image}
+                  alt={items.title}
+                />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

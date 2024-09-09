@@ -4,6 +4,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Link } from "react-router-dom";
 let answer = [];
 
 export default function Region() {
@@ -59,7 +60,7 @@ export default function Region() {
     } else {
       const apiKey = import.meta.env.VITE_API_KEY;
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=6&cuisine=${findCuisine()}`
+        `https://api.spoonacular.com/itemss/complexSearch?apiKey=${apiKey}&number=6&cuisine=${findCuisine()}`
       );
       const data = await api.json();
       localStorage.setItem("region", JSON.stringify(data.results));
@@ -90,20 +91,22 @@ export default function Region() {
           pagination={{ clickable: true }}
           modules={[Navigation, Pagination, Autoplay]}
         >
-          {region.map((recipe) => (
+          {region.map((items) => (
             <SwiperSlide
-              key={recipe.id}
-              className="flex flex-col justify-center items-center text-md sm:text-sm med:text-md lg:text-lg xl:2xl cursor-pointer"
+              key={items.id}
             >
+              <Link className="flex flex-col justify-center items-center text-md med:text-md lg:text-lg xl:2xl cursor-pointer"
+                to={"/items/" + items.id}>
               <h2 className="absolute bg-backgroundLight w-full py-4 text-center bottom-6 rounded-b-lg transition-all duration-300 hover:bg-secondary ">
-                {recipe.title}
+                {items.title}
               </h2>
               <img
                 loading="lazy"
                 className="w-full rounded-xl my-6"
-                src={recipe.image}
-                alt={recipe.title}
+                src={items.image}
+                alt={items.title}
               />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
