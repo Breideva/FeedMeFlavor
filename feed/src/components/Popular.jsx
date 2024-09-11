@@ -21,12 +21,12 @@ export default function Popular() {
     } else {
       const apiKey = import.meta.env.VITE_API_KEY;
       const api = await fetch(
-        `https://api.spoonacular.com/itemss/random?apiKey=${apiKey}&number=8`
+        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8`
       );
       const data = await api.json();
       console.log(data);
-      localStorage.setItem("popular", JSON.stringify(data.itemss));
-      setPopular(data.itemss);
+      localStorage.setItem("popular", JSON.stringify(data.recipes));
+      setPopular(data.recipes);
     }
   };
   return (
