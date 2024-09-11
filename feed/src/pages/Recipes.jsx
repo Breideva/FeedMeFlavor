@@ -27,9 +27,9 @@ export default function Recipes() {
 
   return (
     <div className="bg-background flex justify-center text-text text-center">
-      <div className="w-9/12 mt-8">
+      <div className="w-9/12">
         <div className="flex flex-col">
-          <h1 className="text-7xl my-8">{recipe.title}</h1>
+          <h1 className="text-7xl mt-24 mb-8">{recipe.title}</h1>
           <p
             className="text-xl"
             dangerouslySetInnerHTML={{ __html: recipe.summary }}

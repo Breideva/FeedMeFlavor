@@ -9,6 +9,7 @@
     color: #E6FDFF;
     border-radius: 25%;
     transition: all .2s linear;
+    
 }
 .swiper-button-next::after,
 .swiper-button-prev::after {

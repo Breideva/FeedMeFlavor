@@ -21,8 +21,8 @@ export default function Categories() {
   return (
     <div className="bg-background flex justify-center text-primary ">
       <div className="w-9/12">
-        <h1 className="text-8xl font-bold w-fit mt-8">{params.categories}</h1>
-        <div className="grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pt-16 text-center">
+        <h1 className="text-8xl font-bold w-fit mt-24 mb-8">{params.categories}</h1>
+        <div className="grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-center">
           {categories.map((items) => (
             <Link to={"/items/" + items.id} className="bg-backgroundLight shadow-xl rounded-lg p-4 w-full" key={items.id}>
               <h2 className="text-text text-xl h-20">{items.title}</h2>
