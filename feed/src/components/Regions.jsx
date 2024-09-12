@@ -45,7 +45,7 @@ export default function Region() {
       let math = Math.floor(Math.random() * cuisines.length);
       answer.push(cuisines[math]);
     }
-    return answer[0];
+    return answer[0]
   }
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function Region() {
     <div className="bg-background text-text flex justify-center pt-16">
       <div className="w-9/12">
         <h1 className="font-bold text-5xl sm:text-5xl md:text-6xl lg:text-8xl pb-6 pr-6 text-right">
-          Regions
+          Regions <span className="font-extralight"> - {findCuisine(answer).charAt(0).toUpperCase() + findCuisine(answer).slice(1)}</span>
         </h1>
         <Swiper
           className="p-2"
@@ -94,13 +94,7 @@ export default function Region() {
               >
                 <div className="absolute bg-backgroundLight w-full py-4 text-center bottom-6 rounded-b-lg transition-all duration-300 hover:bg-secondary">
                   <h2>{items.title}</h2>
-                  <div className="flex justify-center gap-2">
-                    {items.cuisines.map((item) => (
-                      <p key={item} className="text-lg font-bold">
-                        {item}
-                      </p>
-                    ))}
-                  </div>
+                 
                 </div>
                 <img
                   loading="lazy"
