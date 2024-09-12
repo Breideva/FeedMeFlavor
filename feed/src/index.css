@@ -4,10 +4,10 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-    background-color:rgba(67, 66, 77);
+    background-color:rgba(67, 66, 77, 0.2);
     padding: 1vw;
-    color: #E6FDFF;
-    border-radius: 25%;
+    color: white;
+    border-radius: 50%;
     transition: all .2s linear;
     
 }

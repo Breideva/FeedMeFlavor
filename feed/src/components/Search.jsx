@@ -14,9 +14,9 @@ export default function Search() {
   return (
     <div>
       <form className="flex items-center bg-backgroundLight rounded-xl" onSubmit={searchUp} action="">
-        <HiMiniMagnifyingGlass onClick={searchUp} className="text-3xl text-text  cursor-pointer" />
+        <HiMiniMagnifyingGlass onClick={searchUp} className="text-3xl text-text  cursor-pointer transition-all duration-500 hover:text-primary" />
         <input
-          className="bg-backgroundLight text-text rounded-r-xl outline-none md:p-2 placeholder-textLight transition-all duration-700 focus:bg-secondary"
+          className="bg-backgroundLight text-text rounded-r-xl outline-none md:p-2 placeholder-textLight transition-all duration-700 focus:bg-secondary hover:bg-primary"
           onChange={(e) => setLook(e.target.value)}
           value={look}
           placeholder="Search..."
