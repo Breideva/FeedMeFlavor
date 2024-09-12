@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -11,33 +11,33 @@ export default function Region() {
   const [region, setRegion] = useState([]);
 
   const cuisines = [
-    "African",
-    "Asian",
-    "American",
-    "British",
-    "Cajun",
-    "Caribbean",
-    "Chinese",
-    "Eastern European",
-    "European",
-    "French",
-    "German",
-    "Greek",
-    "Indian",
-    "Irish",
-    "Italian",
-    "Japanese",
-    "Jewish",
-    "Korean",
-    "Latin American",
-    "Mediterranean",
-    "Mexican",
-    "Middle Eastern",
-    "Nordic",
-    "Southern",
-    "Spanish",
-    "Thai",
-    "Vietnamese",
+    "african",
+    "asian",
+    "american",
+    "british",
+    "cajun",
+    "caribbean",
+    "chinese",
+    "eastern european",
+    "european",
+    "french",
+    "german",
+    "greek",
+    "indian",
+    "irish",
+    "italian",
+    "japanese",
+    "jewish",
+    "korean",
+    "latin american",
+    "mediterranean",
+    "mexican",
+    "middle eastern",
+    "nordic",
+    "southern",
+    "spanish",
+    "thai",
+    "vietnamese",
   ];
 
   function findCuisine() {
@@ -59,12 +59,13 @@ export default function Region() {
       setRegion(JSON.parse(check));
     } else {
       const apiKey = import.meta.env.VITE_API_KEY;
+      console.log(findCuisine());
       const api = await fetch(
-        `https://api.spoonacular.com/itemss/complexSearch?apiKey=${apiKey}&number=6&cuisine=${findCuisine()}`
+        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8&tags=${findCuisine()}`
       );
       const data = await api.json();
-      localStorage.setItem("region", JSON.stringify(data.results));
-      setRegion(data.results);
+      localStorage.setItem("region", JSON.stringify(data.recipes));
+      setRegion(data.recipes);
     }
   };
   return (
@@ -74,7 +75,7 @@ export default function Region() {
           Regions
         </h1>
         <Swiper
-          className="bg-backgroundLight shadow-xl rounded-xl p-4"
+          className="p-2"
           spaceBetween={30}
           slidesPerView={1}
           breakpoints={{
@@ -82,30 +83,31 @@ export default function Region() {
             768: { slidesPerView: 3 }, // md
             1024: { slidesPerView: 4 }, // md
           }}
-          navigation
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
           pagination={{ clickable: true }}
-          modules={[Navigation, Pagination, Autoplay]}
+          modules={[Pagination]}
         >
           {region.map((items) => (
-            <SwiperSlide
-              key={items.id}
-            >
-              <Link className="flex flex-col justify-center items-center text-md med:text-md lg:text-lg xl:2xl cursor-pointer"
-                to={"/items/" + items.id}>
-              <h2 className="absolute bg-backgroundLight w-full py-4 text-center bottom-6 rounded-b-lg transition-all duration-300 hover:bg-secondary ">
-                {items.title}
-              </h2>
-              <img
-                loading="lazy"
-                className="w-full rounded-xl my-6"
-                src={items.image}
-                alt={items.title}
-              />
+            <SwiperSlide key={items.id}>
+              <Link
+                className="flex flex-col justify-center items-center text-md med:text-md lg:text-lg xl:2xl cursor-pointer"
+                to={"/items/" + items.id}
+              >
+                <div className="absolute bg-backgroundLight w-full py-4 text-center bottom-6 rounded-b-lg transition-all duration-300 hover:bg-secondary">
+                  <h2>{items.title}</h2>
+                  <div className="flex justify-center gap-2">
+                    {items.cuisines.map((item) => (
+                      <p key={item} className="text-lg font-bold">
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+                <img
+                  loading="lazy"
+                  className="w-full rounded-xl my-6"
+                  src={items.image}
+                  alt={items.title}
+                />
               </Link>
             </SwiperSlide>
           ))}
