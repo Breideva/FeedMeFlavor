@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -36,7 +36,7 @@ export default function Popular() {
           Popular
         </h1>
         <Swiper
-          className="bg-backgroundLight shadow-xl rounded-xl p-3"
+          className="p-2"
           spaceBetween={30}
           slidesPerView={1}
           breakpoints={{
@@ -45,9 +45,13 @@ export default function Popular() {
             1024: { slidesPerView: 3 }, // lg
             1280: { slidesPerView: 4 }, // xl
           }}
-          navigation
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
           pagination={{ clickable: true }}
-          modules={[Navigation, Pagination]}
+          modules={[ Autoplay, Pagination]}
         >
           {popular.map((items) => (
             <SwiperSlide key={items.id}>
@@ -59,6 +63,7 @@ export default function Popular() {
                   {items.title}
                 </h2>
                 <img
+                  loading="lazy"
                   className="w-full rounded-xl m-6"
                   src={items.image}
                   alt={items.title}

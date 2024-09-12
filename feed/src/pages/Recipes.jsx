@@ -47,7 +47,12 @@ export default function Recipes() {
         </div>
         <div className="flex flex-wrap text-center justify-around items-center bg-backgroundLight rounded-xl shadow-xl p-4">
           <div className="w-full md:w-1/2 lg:w-1/2 xl:w-2/5">
-            <img className="rounded-xl" src={recipe.image} alt="" />
+            <img
+              loading="lazy"
+              className="rounded-xl"
+              src={recipe.image}
+              alt=""
+            />
           </div>
           <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/2 text-lg md:text-sm lg:text-lg xl:text-2x">
             <h2 className="m-6 text-5xl">Ingredients</h2>
