@@ -8,7 +8,6 @@ export default function AllPages() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/types/:categories" element={<Categories />} />
-      {/* <Route path="/main/:categories" element={<MainCategories />} /> */}
       <Route path="/items/:info" element={<Recipes />} />
     </Routes>
   );
