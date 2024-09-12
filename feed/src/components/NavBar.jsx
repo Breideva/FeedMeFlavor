@@ -52,6 +52,7 @@ export default function NavBar() {
                     <button
                       className="my-2 flex items-end"
                       onClick={toggleDropdown}
+                      
                     >
                       Recipes
                       {isOpen ? (
@@ -62,7 +63,7 @@ export default function NavBar() {
                     </button>
                     {isOpen && (
                       <div className="bg-background absolute text-xs md:text-base -right-1/2 text-textLight">
-                        <ul className="px-2 border-2 border-textLight shadow-xl rounded-xl">
+                        <ul onClick={toggleDropdown} onMouseLeave={toggleDropdown} className="px-2 border-2 border-textLight shadow-xl rounded-xl">
                           <li className="my-2 border-b-2 border-textLight transition-all duration-500 hover:text-text hover:border-primary">
                             <Link to="/types/Appetizers">Appetizers</Link>
                           </li>
@@ -92,7 +93,7 @@ export default function NavBar() {
         ) : (
           <div className="w-9/12 flex items-center justify-around">
             <div>
-              <button className="my-2 flex items-end" onClick={toggleDropdown}>
+              <button className="my-2 flex items-end transition-all duration-500 hover:text-textLight" onClick={toggleDropdown}>
                 Recipes
                 {isOpen ? (
                   <MdKeyboardArrowDown className="w-6" />
@@ -102,7 +103,7 @@ export default function NavBar() {
               </button>
               {isOpen && (
                 <div className="bg-background absolute text-sm md:text-lg text-textLight rounded-xl">
-                  <ul className="px-2 border-2 border-textLight shadow-xl rounded-xl">
+                  <ul onClick={toggleDropdown} onMouseLeave={toggleDropdown} className="px-2 border-2 border-textLight shadow-xl rounded-xl">
                     <li className="my-2 border-b-2 border-textLight transition-all duration-500 hover:text-text hover:border-primary">
                       <Link to="/types/Appetizers">Appetizers</Link>
                     </li>
@@ -119,8 +120,8 @@ export default function NavBar() {
                 </div>
               )}
             </div>
-            <h2><Link to="/">Home</Link></h2>
-            <h2><Link to="/">About</Link></h2>
+            <h2 className="transition-all duration-500 hover:text-textLight"><Link to="/">Home</Link></h2>
+            <h2 className="transition-all duration-500 hover:text-textLight"><Link to="/">About</Link></h2>
           </div>
         )}
         <Search />
