@@ -13,24 +13,16 @@ export default function Popular() {
     getPopular();
   }, []);
 
-  const check = localStorage.getItem("popular");
-
   const getPopular = async () => {
-    if (check) {
-      setPopular(JSON.parse(check));
-    } else {
-      const apiKey = import.meta.env.VITE_API_KEY;
-      const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8`
-      );
-      const data = await api.json();
-      console.log(data);
-      localStorage.setItem("popular", JSON.stringify(data.recipes));
-      setPopular(data.recipes);
-    }
+    const apiKey = import.meta.env.VITE_API_KEY;
+    const api = await fetch(
+      `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8`
+    );
+    const data = await api.json();
+    setPopular(data.recipes);
   };
   return (
-    <div className="bg-background text-text flex justify-center">
+    <div className="bg-background text-text flex justify-center bg-gradient-to-br from-background to-secondary">
       <div className="w-9/12">
         <h1 className="font-bold text-5xl sm:text-5xl md:text-6xl lg:text-8xl pb-6 pl-6">
           Popular
@@ -51,7 +43,7 @@ export default function Popular() {
             pauseOnMouseEnter: true,
           }}
           pagination={{ clickable: true }}
-          modules={[ Autoplay, Pagination]}
+          modules={[Autoplay, Pagination]}
         >
           {popular.map((items) => (
             <SwiperSlide key={items.id}>

@@ -5,28 +5,21 @@ export default function Recipes() {
   const params = useParams();
   const [recipe, setRecipe] = useState({});
 
-  const check = localStorage.getItem("recipe");
-
   const getRecipe = async (name) => {
-    if (check) {
-      setRecipe(JSON.parse(check));
-    } else {
-      const apiKey = import.meta.env.VITE_API_KEY;
-      const api = await fetch(
-        `https://api.spoonacular.com/recipes/${name}/information?apiKey=${apiKey}&number=1`
-      );
-      const data = await api.json();
-      setRecipe(data);
-      localStorage.setItem("recipe", JSON.stringify(data));
-      data.extendedIngredients.map((item) => console.log(item.name));
-    }
+    setRecipe(JSON.parse(check));
+    const apiKey = import.meta.env.VITE_API_KEY;
+    const api = await fetch(
+      `https://api.spoonacular.com/recipes/${name}/information?apiKey=${apiKey}&number=1`
+    );
+    const data = await api.json();
+    setRecipe(data);
   };
   useEffect(() => {
     getRecipe(params.info);
   }, [params.info]);
 
   return (
-    <div className="bg-background flex justify-center text-text text-center">
+    <div className="bg-background flex justify-center text-text text-center bg-gradient-to-b from-background to-secondary">
       <div className="w-9/12">
         <div className="flex flex-col">
           <h1 className="text-7xl mt-24 mb-8">{recipe.title}</h1>
