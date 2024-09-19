@@ -39,7 +39,9 @@ export default function NavBar() {
   return (
     <div className="bg-background flex justify-center w-full fixed top-0 left-0 z-20 text-text shadow-xl">
       <div className="w-9/12 flex items-center justify-between text-sm sm:text-base lg:text-lg xl:text-xl">
-        <Link to="/"><img className="h-12 md:h-20 p-2" src={Logo} alt="Logo" /></Link>
+        <Link to="/">
+          <img className="h-12 md:h-20 p-2" src={Logo} alt="Logo" />
+        </Link>
         {linesOpen ? (
           <>
             <button onClick={mobileDropdown}>
@@ -52,7 +54,6 @@ export default function NavBar() {
                     <button
                       className="my-2 flex items-end"
                       onClick={toggleDropdown}
-                      
                     >
                       Recipes
                       {isOpen ? (
@@ -63,7 +64,11 @@ export default function NavBar() {
                     </button>
                     {isOpen && (
                       <div className="bg-background absolute text-xs md:text-base -right-1/2 text-textLight">
-                        <ul onClick={toggleDropdown} onMouseLeave={toggleDropdown} className="px-2 border-2 border-textLight shadow-xl rounded-xl">
+                        <ul
+                          onClick={toggleDropdown}
+                          onMouseLeave={toggleDropdown}
+                          className="px-2 border-2 border-textLight shadow-xl rounded-xl"
+                        >
                           <li className="my-2 border-b-2 border-textLight transition-all duration-500 hover:text-text hover:border-primary">
                             <Link to="/types/Appetizers">Appetizers</Link>
                           </li>
@@ -84,7 +89,7 @@ export default function NavBar() {
                     <Link to="/">Home</Link>
                   </li>
                   <li className="my-2 border-b-2 border-textLight transition-all duration-500 hover:text-text  hover:border-primary">
-                    <Link to="/types/Beverages">About</Link>
+                    <Link to="/about">About</Link>
                   </li>
                 </ul>
               </div>
@@ -93,7 +98,10 @@ export default function NavBar() {
         ) : (
           <div className="w-9/12 flex items-center justify-around">
             <div>
-              <button className="my-2 flex items-end transition-all duration-500 hover:text-textLight" onClick={toggleDropdown}>
+              <button
+                className="my-2 flex items-end transition-all duration-500 hover:text-textLight"
+                onClick={toggleDropdown}
+              >
                 Recipes
                 {isOpen ? (
                   <MdKeyboardArrowDown className="w-6" />
@@ -103,25 +111,33 @@ export default function NavBar() {
               </button>
               {isOpen && (
                 <div className="bg-background absolute text-sm md:text-lg text-textLight rounded-xl">
-                  <ul onClick={toggleDropdown} onMouseLeave={toggleDropdown} className="px-2 border-2 border-textLight shadow-xl rounded-xl">
+                  <ul
+                    onClick={toggleDropdown}
+                    onMouseLeave={toggleDropdown}
+                    className="px-2 border-2 border-textLight shadow-xl rounded-xl"
+                  >
                     <li className="my-2 border-b-2 border-textLight transition-all duration-500 hover:text-text hover:border-primary">
-                      <Link to="/types/Appetizers">Appetizers</Link>
+                      <Link to="/types/appetizers">Appetizers</Link>
                     </li>
                     <li className="my-2 border-b-2 border-textLight transition-all duration-500 hover:text-text  hover:border-primary">
-                      <Link to="/types/Desserts">Desserts</Link>
+                      <Link to="/types/desserts">Desserts</Link>
                     </li>
                     <li className="my-2 border-b-2 border-textLight transition-all duration-500 hover:text-text  hover:border-primary">
-                      <Link to="/types/Beverages">Beverages</Link>
+                      <Link to="/types/beverages">Beverages</Link>
                     </li>
                     <li className="my-2 border-b-2 border-textLight transition-all duration-500 hover:text-text  hover:border-primary">
-                      <Link to="/types/Snacks">Snacks</Link>
+                      <Link to="/types/snacks">Snacks</Link>
                     </li>
                   </ul>
                 </div>
               )}
             </div>
-            <h2 className="transition-all duration-500 hover:text-textLight"><Link to="/">Home</Link></h2>
-            <h2 className="transition-all duration-500 hover:text-textLight"><Link to="/">About</Link></h2>
+            <h2 className="transition-all duration-500 hover:text-textLight">
+              <Link to="/">Home</Link>
+            </h2>
+            <h2 className="transition-all duration-500 hover:text-textLight">
+              <Link to="/about">About</Link>
+            </h2>
           </div>
         )}
         <Search />
