@@ -16,7 +16,7 @@ export default {
       },
       fontFamily: {
         tienne: ['Tienne', 'sans-serif'],
-      }
+      },
     },
   },
   plugins: [],

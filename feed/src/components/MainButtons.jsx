@@ -3,10 +3,10 @@ import Food from "../assets/Food-Image.png";
 
 export default function MainButtons() {
   return (
-    <div className="bg-background text-text flex justify-center pb-32">
+    <div className="bg-background text-text flex justify-center pb-32 bg-gradient-to-tr from-background to-secondary">
       <div className="w-9/12 justify-items-center grid grid-cols-1 sm:grid-cols-2 gap-8">
         <div className="bg-backgroundLight transition-all duration-500 rounded-xl shadow-xl border-b-8 border-transparent hover:border-primary">
-          <Link to="/types/Sweet">
+          <Link to="/types/sweet">
             <img   loading="lazy" className="w-full p-4 mb-2 rounded-3xl" src={Food} alt="" />
           </Link>
           <h3 className="px-4 text-3xl md:text-4xl lg:text-5xl">Sweet</h3>
@@ -16,7 +16,7 @@ export default function MainButtons() {
           </p>
         </div>
         <div className="bg-backgroundLight transition-all duration-500 rounded-xl shadow-xl border-b-8 border-transparent hover:border-primary">
-          <Link to="/types/Salty">
+          <Link to="/types/savory">
             <img  loading="lazy" className="w-full p-4 mb-2 rounded-3xl" src={Food} alt="" />{" "}
           </Link>
           <h3 className="px-4 text-3xl md:text-4xl lg:text-5xl">Salty</h3>

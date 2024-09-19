@@ -8,10 +8,10 @@ export default function Categories() {
   const makeCategories = async (name) => {
     const apiKey = import.meta.env.VITE_API_KEY;
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=1&query=${name}`
+      `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8&tags=${name}`
     );
     const data = await api.json();
-    setCategories(data.results);
+    setCategories(data.recipes);
   };
 
   useEffect(() => {
@@ -19,10 +19,10 @@ export default function Categories() {
   }, [params.categories]);
 
   return (
-    <div className="bg-background flex justify-center text-primary ">
+    <div className="bg-background flex pb-8 justify-center text-primary bg-gradient-to-b from-background to-secondary">
       <div className="w-9/12">
         <h1 className="text-8xl font-bold w-fit mt-24 mb-8">
-          {params.categories}
+          {params.categories.charAt(0).toUpperCase() + params.categories.slice(1)}
         </h1>
         <div className="grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-center">
           {categories.map((items) => (

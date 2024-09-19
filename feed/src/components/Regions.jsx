@@ -52,24 +52,16 @@ export default function Region() {
     getRegion();
   }, []);
 
-  const check = localStorage.getItem("region");
-
   const getRegion = async () => {
-    if (check) {
-      setRegion(JSON.parse(check));
-    } else {
       const apiKey = import.meta.env.VITE_API_KEY;
-      console.log(findCuisine());
       const api = await fetch(
         `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8&tags=${findCuisine()}`
       );
       const data = await api.json();
-      localStorage.setItem("region", JSON.stringify(data.recipes));
       setRegion(data.recipes);
     }
-  };
   return (
-    <div className="bg-background text-text flex justify-center pt-16">
+    <div className="bg-background text-text flex justify-center pt-16 bg-gradient-to-tr from-background to-secondary">
       <div className="w-9/12">
         <h1 className="font-bold text-5xl sm:text-5xl md:text-6xl lg:text-8xl pb-6 pr-6 text-right">
           Regions <span className="font-extralight"> - {findCuisine(answer).charAt(0).toUpperCase() + findCuisine(answer).slice(1)}</span>
