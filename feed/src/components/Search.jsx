@@ -12,14 +12,21 @@ export default function Search() {
   };
 
   return (
-    <div>
-      <form className="flex items-center bg-backgroundLight rounded-xl" onSubmit={searchUp} action="">
-        <HiMiniMagnifyingGlass onClick={searchUp} className="text-3xl text-text  cursor-pointer transition-all duration-500 hover:text-primary" />
+    <div className="w-full">
+      <form
+        className="flex w-full items-center bg-white rounded-xl"
+        onSubmit={searchUp}
+        action=""
+      >
+        <HiMiniMagnifyingGlass
+          onClick={searchUp}
+          className="text-lg xl:text-3xl p-1 text-text cursor-pointer"
+        />
         <input
-          className="bg-backgroundLight text-text rounded-r-xl outline-none md:p-2 placeholder-textLight transition-all duration-700 focus:bg-secondary hover:bg-primary"
+          className="bg-white w-full text-text font-light rounded-r-xl outline-none placeholder-text p-2 text-sm sm:text-base xl:text-xl"
           onChange={(e) => setLook(e.target.value)}
           value={look}
-          placeholder="Search..."
+          placeholder="Search recipes..."
           type="text"
         />
       </form>

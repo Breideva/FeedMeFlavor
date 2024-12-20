@@ -1,17 +1,15 @@
-import React from "react";
-
 export default function About() {
   return (
     <div
       id="body"
-      className="flex items-center justify-center bg-gradient-to-tr from-background to-secondary"
+      className="flex items-center justify-center bg-secondary text-white min-h-screen"
     >
       <div className="w-9/12 flex h-screen items-center justify-center relative">
-        <div className="text-text flex flex-col gap-6">
-          <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-8xl w-1/4">
+        <div className="flex flex-col gap-6">
+          <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-bold border-b-2 w-fit border-primary">
             About
           </h1>
-          <p className="text-xs sm:text-sm med:text-md lg:text-3xl">
+          <p className="text-sm sm:text-lg med:text-xl lg:text-2xl xl:text-3xl font-light">
             Feed Me Flavor is an engaging food recipe website that leverages
             Spoonacular's API to bring a rich variety of culinary options to its
             users. Featuring an intuitive interface, the site offers a range of
