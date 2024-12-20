@@ -1,17 +1,15 @@
-import CategoryButtons from "../components/CategoryButtons";
-import Header from "../components/Header";
-import MainButtons from "../components/MainButtons";
-import Popular from "../components/Popular";
-import Regions from "../components/Regions";
+import FirstBody from "../home-sections/FirstBody";
+import Header from "../home-sections/Header";
+import SecondBody from "../home-sections/SecondBody";
+import ThirdBody from "../home-sections/ThirdBody";
 
 export default function Home() {
   return (
     <div>
       <Header />
-      <Popular />
-      <Regions />
-      <CategoryButtons />
-      <MainButtons />
+      <FirstBody />
+      <SecondBody />
+      <ThirdBody />
     </div>
   );
 }
