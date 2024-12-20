@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { SwiperSlide } from "swiper/react";
+import { FaHeart } from "react-icons/fa";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -14,56 +15,57 @@ export default function Popular() {
   }, []);
 
   const getPopular = async () => {
+    // const check = localStorage.getItem("first");
+    // if (check) {
+    //   setPopular(JSON.parse(check));
+    // } else {
     const apiKey = import.meta.env.VITE_API_KEY;
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8`
+      `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1`
     );
     const data = await api.json();
+    // localStorage.setItem("first", JSON.stringify(data.recipes));
     setPopular(data.recipes);
+    // }
   };
   return (
-    <div className="bg-background text-text flex justify-center bg-gradient-to-br from-background to-secondary">
-      <div className="w-9/12">
-        <h1 className="font-bold text-5xl sm:text-5xl md:text-6xl lg:text-8xl pb-6 pl-6">
-          Popular
-        </h1>
-        <Swiper
-          className="p-2"
-          spaceBetween={30}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 2 }, // sm
-            768: { slidesPerView: 3 }, // md
-            1024: { slidesPerView: 3 }, // lg
-            1280: { slidesPerView: 4 }, // xl
-          }}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          pagination={{ clickable: true }}
-          modules={[Autoplay, Pagination]}
-        >
-          {popular.map((items) => (
-            <SwiperSlide key={items.id}>
-              <Link
-                className="flex flex-col justify-center items-center text-md med:text-md lg:text-lg xl:2xl cursor-pointer"
-                to={"/items/" + items.id}
-              >
-                <h2 className="absolute bg-backgroundLight w-3/4 py-1 text-center rounded-xl first-letter:transition-all duration-300 hover:bg-secondary">
-                  {items.title}
-                </h2>
-                <img
-                  loading="lazy"
-                  className="w-full rounded-xl m-6"
-                  src={items.image}
-                  alt={items.title}
-                />
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+    <div className="text-text flex justify-center w-full h-full bg-transparent font-martel">
+      <div className="w-full">
+        {popular.map((items) => (
+          <SwiperSlide key={items.id}>
+            <Link
+              className="flex flex-col justify-center items-start w-full h-full group"
+              to={"/items/" + items.id}
+            >
+              <img
+                loading="lazy"
+                className="w-full group-hover:opacity-75 transition-all duration-300"
+                src={items.image}
+                alt={items.title}
+              />
+              <div className="flex flex-col md:flex-row items-center justify-between text-start py-2">
+                <div className="w-3/4">
+                  <p className="text-base font-light text-primary">
+                    Ready in {items.readyInMinutes} minutes
+                  </p>
+                  <h2 className="xl:text-3xl font-semibold">{items.title}</h2>
+                  <div className="flex flex-wrap gap-1 text-xl font-semibold">
+                    {items.cuisines.map((item, index) => (
+                      <div key={index}>
+                        {item}
+                        {index < items.cuisines.length - 1 ? "," : ""}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="w-1/4 flex items-center justify-center font-bold gap-1">
+                  <h3 className="xl:text-4xl">{items.aggregateLikes}</h3>
+                  <FaHeart className="text-xl text-red-600" />
+                </div>
+              </div>
+            </Link>
+          </SwiperSlide>
+        ))}
       </div>
     </div>
   );
