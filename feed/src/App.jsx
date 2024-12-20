@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar";
 
 export default function App() {
   return (
-    <Router className="font-tienne">
+    <Router>
       <NavBar />
       <AllPages />
     </Router>

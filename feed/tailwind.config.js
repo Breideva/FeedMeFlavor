@@ -1,24 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        background: "#302F37", 
-        backgroundLight: "rgba(67, 66, 77, 0.3)",
-        text: "#E6FDFF", 
-        textLight: "rgba(238, 249, 250, 0.8)",
-        primary: "#0A4E5C", 
-        secondary: "#062F37",
+        background: "#F5EDDE",
+        blueBackground: "#888FB8",
+        text: "#1B150D",
+        primary: "#062BFF",
+        secondary: "#061040",
+        box: "#817c9b",
       },
       fontFamily: {
-        tienne: ['Tienne', 'sans-serif'],
+        martel: ["Martel", "sans-serif"],
       },
     },
   },
   plugins: [],
-}
-
+};
